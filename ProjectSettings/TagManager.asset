@@ -2,8 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - UpperBorder
+  - LowerBorder
+  - LeftBorder
+  - RightBorder
+  - Border
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -11,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Obstacle
+  - Player
   - 
   - 
   - 
@@ -41,6 +47,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Backgrond
+    uniqueID: 2655788103
+    locked: 0
+  - name: Obstacle
+    uniqueID: 4026698803
+    locked: 0
+  - name: Player
+    uniqueID: 1349981433
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
@@ -50,27 +65,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 

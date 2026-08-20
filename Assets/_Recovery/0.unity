@@ -489,7 +489,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.119259514, g: 0.3773585, b: 0.3035907, a: 1}
+  m_Color: {r: 0.11372549, g: 0.13333334, b: 0.1254902, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -904,7 +904,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 810467572}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -1484,7 +1484,8 @@ GameObject:
   - component: {fileID: 476992705}
   - component: {fileID: 476992704}
   - component: {fileID: 476992703}
-  m_Layer: 0
+  - component: {fileID: 476992708}
+  m_Layer: 7
   m_Name: Obstacle_Yellow
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1646,12 +1647,58 @@ Transform:
   m_GameObject: {fileID: 476992702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0183, y: 0.6614, z: 0}
+  m_LocalPosition: {x: -1.41, y: 0.23, z: 0}
   m_LocalScale: {x: 0.7582263, y: 0.61543417, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &476992708
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476992702}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &485966736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,7 +2257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &553868406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2839,7 +2886,8 @@ GameObject:
   - component: {fileID: 997327329}
   - component: {fileID: 997327328}
   - component: {fileID: 997327327}
-  m_Layer: 0
+  - component: {fileID: 997327332}
+  m_Layer: 7
   m_Name: Obstacle_Green
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3001,12 +3049,58 @@ Transform:
   m_GameObject: {fileID: 997327326}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1119, y: 2.25, z: 0}
+  m_LocalPosition: {x: 1.1119, y: 2.64, z: 0}
   m_LocalScale: {x: 1.2348962, y: 0.21268806, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &997327332
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997327326}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1020501606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,7 +3120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1020501607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3105,7 +3199,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1583754327}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
         m_MethodName: ResetPos
         m_Mode: 1
@@ -4044,7 +4138,11 @@ GameObject:
   - component: {fileID: 1246837666}
   - component: {fileID: 1246837668}
   - component: {fileID: 1246837669}
+  - component: {fileID: 1246837672}
+  - component: {fileID: 1246837673}
   - component: {fileID: 1246837670}
+  - component: {fileID: 1246837671}
+  - component: {fileID: 1246837674}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4121,7 +4219,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.3, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -4211,6 +4309,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb29e18875139dc43ab2727cf5a82b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollider
+--- !u!114 &1246837671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246837665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa4a925f187ad343b7965ddc141f5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugOverlay
+--- !u!114 &1246837672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246837665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fb4a93fa738bf4794831b069980242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  worldCam: {fileID: 1545713140}
+  _player: {fileID: 1246837667}
+  currentSens: 1
+--- !u!114 &1246837673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246837665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1deeae6f9d7ee3d49a1824443d72d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDragMovement
+  margin: 100
+--- !u!114 &1246837674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246837665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54e3b1cee4f4d3418f6add3e2e5e91e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSensitivity
+  lowSens: 0.2
+  normalSens: 0.4
+  highSens: 0.6
 --- !u!1 &1266074127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5477,7 +5630,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1583754328}
-  - component: {fileID: 1583754327}
   m_Layer: 0
   m_Name: PlayerInteraction
   m_TagString: Untagged
@@ -5485,29 +5637,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1583754327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583754326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add7c62e402f55e4da47dc1b4feb4fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
-  worldCam: {fileID: 1545713140}
-  player: {fileID: 1246837665}
-  currentSens: 0
-  lowSens: 0.3
-  normalSens: 0.5
-  highSens: 0.7
-  margin: 100
-  monoFont: {fileID: 0}
-  stringToEdit: 'Hello World
-
-    I''ve got 2 lines...'
 --- !u!4 &1583754328
 Transform:
   m_ObjectHideFlags: 0
@@ -6297,7 +6426,8 @@ GameObject:
   - component: {fileID: 1742202427}
   - component: {fileID: 1742202426}
   - component: {fileID: 1742202425}
-  m_Layer: 0
+  - component: {fileID: 1742202430}
+  m_Layer: 7
   m_Name: Obstacle_Blue
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -6459,12 +6589,58 @@ Transform:
   m_GameObject: {fileID: 1742202424}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0299, y: 0.9827, z: 0}
+  m_LocalPosition: {x: 1.47, y: 0.17, z: 0}
   m_LocalScale: {x: 0.46029156, y: 0.82545, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1742202430
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742202424}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1822248561
 GameObject:
   m_ObjectHideFlags: 0
@@ -7181,7 +7357,7 @@ GameObject:
   - component: {fileID: 2008310670}
   - component: {fileID: 2008310674}
   - component: {fileID: 2008310675}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Obstacle_Red
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -7316,7 +7492,7 @@ Transform:
   m_GameObject: {fileID: 2008310669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.99, y: 2.17, z: 0}
+  m_LocalPosition: {x: -1.43, y: 2.52, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -8115,8 +8291,8 @@ SceneRoots:
   - {fileID: 1246837667}
   - {fileID: 2008310673}
   - {fileID: 1742202429}
-  - {fileID: 997327331}
   - {fileID: 476992707}
+  - {fileID: 997327331}
   - {fileID: 1489708435}
   - {fileID: 110750523}
   - {fileID: 804747369}
