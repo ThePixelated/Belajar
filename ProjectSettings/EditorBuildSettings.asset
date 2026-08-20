@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/Swiping.unity
+    guid: 316f67f842ec95a4f96b22e84ab25fe9
+  - enabled: 0
     path: Assets/Scenes/Test.unity
     guid: a5539323f840fc845a5919ef4f298631
   m_configObjects:
