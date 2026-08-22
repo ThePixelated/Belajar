@@ -15,13 +15,22 @@ public class ChunkInformation : MonoBehaviour
     public GameObject FrontConnection { get { return _frontConnection; } set { _frontConnection = value; } }
     public GameObject BackConnection { get { return _BackConnection; } set { _BackConnection = value; } }
 
+
+    private static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+    private MaterialPropertyBlock _mpb;
     private void Awake()
     {
         Color colorRand = new Color((float)Random.Range(1, 256) / 255f, (float)Random.Range(1, 256) / 255f, (float)Random.Range(1, 256) / 255f, 1);
+        _mpb = new MaterialPropertyBlock();
 
-        MeshRenderer meshFront = _frontConnection.GetComponent<MeshRenderer>();
-        MeshRenderer meshBack = _BackConnection.GetComponent<MeshRenderer>();
-        meshFront.material.SetColor("_BaseColor", colorRand);
-        meshBack.material.SetColor("_BaseColor", colorRand);
+        ApplyColor(_frontConnection.GetComponent<MeshRenderer>(), colorRand);
+        ApplyColor(_BackConnection.GetComponent<MeshRenderer>(), colorRand);
+    }
+
+    private void ApplyColor(MeshRenderer r, Color c)
+    {
+        r.GetPropertyBlock(_mpb);
+        _mpb.SetColor(BaseColorID, c);
+        r.SetPropertyBlock(_mpb);
     }
 }

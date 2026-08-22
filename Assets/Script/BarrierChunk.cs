@@ -8,7 +8,7 @@ public class BarrierChunk : MonoBehaviour
         {
             //GameObject test = other.gameObject;
             Debug.Log("Collision Detected");
-            ChunkManager.BarrierChunkDetection(other.gameObject);
+            ChunkManager.BarrierChunkDetection();
         }
     }
 }

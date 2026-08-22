@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ChunkMovement : MonoBehaviour
 {
-    //[SerializeField] private ChunkManager m_chunkGenerator;
+    [SerializeField] private ChunkManager m_chunkGenerator;
     [SerializeField] private float speedMovement;
 
     //private List<ListOfChunks> _listofChunks;

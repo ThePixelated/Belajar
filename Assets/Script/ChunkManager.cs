@@ -18,6 +18,7 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] private int lengthListChunk;
     [SerializeField] private List<ListOfChunks> listOfChunk = new List<ListOfChunks>();
     private int _idChunk = 0;
+    private int _currentIndexChunkPool = 0;
     public List<ListOfChunks> ListOfChunks { get { return listOfChunk; } set { listOfChunk = value; } }
 
     private void Awake()
@@ -26,42 +27,49 @@ public class ChunkManager : MonoBehaviour
         Innitiate();
     }
 
-    private void Update()
-    {
-        ChunkSet();
+    //private void Update()
+    //{
+        
 
-        if (listOfChunk.Count < lengthListChunk)
-        {
-            SpawnChunk();
-        }
-    }
+    //    if (listOfChunk.Count < lengthListChunk)
+    //    {
+    //        SpawnChunk();
+    //    }
+    //}
 
     private void OnEnable()
     {
-        onBarrierChunk += RemoveChunk;
+        onBarrierChunk += PoolingChunk;
     }
 
     private void OnDisable()
     {
-        onBarrierChunk -= RemoveChunk;
+        onBarrierChunk -= PoolingChunk;
     }
 
-    public static Action<GameObject> onBarrierChunk;
-    public static void BarrierChunkDetection(GameObject targetGObj)
+    public static Action onBarrierChunk;
+    public static void BarrierChunkDetection()
     {
-        onBarrierChunk?.Invoke(targetGObj);
+        onBarrierChunk?.Invoke();
     }
 
-    private void RemoveChunk(GameObject targetGObj)
+    //private void RemoveChunk(GameObject targetGObj)
+    //{
+    //    Destroy(listOfChunk[0].ChunkObj);
+    //    listOfChunk[0].ChunkObj = null;
+    //    listOfChunk.RemoveAt(0);
+    //}
+
+    private void Innitiate()
     {
-        Destroy(listOfChunk[0].ChunkObj);
-        listOfChunk[0].ChunkObj = null;
-        listOfChunk.RemoveAt(0);
+        for (int i = 0; i < lengthListChunk; i++) SpawnChunk();
     }
 
     private void SpawnChunk()
     {
         listOfChunk.Add(new ListOfChunks());
+        //ChunkSet();
+
         listOfChunk[listOfChunk.Count - 1].ChunkState = targetChunk;
         listOfChunk[listOfChunk.Count - 1].ChunkID = _idChunk.ToString();
         _idChunk++;
@@ -75,7 +83,7 @@ public class ChunkManager : MonoBehaviour
 
         if (listOfChunk.Count > 1)
         {
-            Vector3 childChunk = gObj.transform.GetChild(0).localScale;
+            Vector3 childChunk = gObj.GetComponent<ChunkInformation>().LeftPartPref.transform.localScale;
             Debug.Log($"LS {gObj.name}: " + childChunk);
             Debug.Log($"Trans Pos: {listOfChunk[(listOfChunk.Count - 1) - 1].ChunkObj.name}" + listOfChunk[(listOfChunk.Count - 1) - 1].ChunkObj.transform.position);
 
@@ -87,9 +95,34 @@ public class ChunkManager : MonoBehaviour
         currentChunk = listOfChunk[0].ChunkState;
     }
 
-    private void Innitiate()
+    private void PoolingChunk()
     {
-        for (int i = 0; i < lengthListChunk; i++) SpawnChunk();
+        ChunkSet();
+
+        //0 2
+        //1 0
+        //2 1
+
+        if (_currentIndexChunkPool >= lengthListChunk)
+            _currentIndexChunkPool = 0;
+
+        listOfChunk[_currentIndexChunkPool].ChunkState = targetChunk;
+        listOfChunk[_currentIndexChunkPool].ChunkID = _currentIndexChunkPool.ToString();
+
+        //int chunkPooledIndex = _currentIndexChunkPool;
+        int chunkTargetIndex = (_currentIndexChunkPool + (lengthListChunk - 1)) % lengthListChunk;
+        GameObject gObj = listOfChunk[_currentIndexChunkPool].ChunkObj;
+        Debug.LogWarning($"CTI: {_currentIndexChunkPool},{chunkTargetIndex}");
+        Vector3 childChunk = gObj.GetComponent<ChunkInformation>().LeftPartPref.transform.localScale;
+        Debug.Log($"LS {gObj.name}: " + childChunk);
+        Debug.Log($"Trans Pos: {listOfChunk[chunkTargetIndex].ChunkObj.name}" + listOfChunk[chunkTargetIndex].ChunkObj.transform.position);
+
+        Vector3 targetPos = new Vector3(gObj.transform.position.x, gObj.transform.position.y, listOfChunk[chunkTargetIndex].ChunkObj.transform.position.z + childChunk.z);
+        //Vector3 targetPos = listOfChunk[(listOfChunk.Count - 1) - 1].ChunkObj.transform.position;
+        gObj.transform.position = targetPos;
+
+        currentChunk = listOfChunk[_currentIndexChunkPool].ChunkState;
+        _currentIndexChunkPool++;
     }
 
     private void ChunkSet()
@@ -104,20 +137,8 @@ public class ChunkManager : MonoBehaviour
         }
     }
 
-    public void TriggerEvent()
-    {
-        if(!isEventTrigger)
-        {
-            isEventTrigger = true;
-            //ChunkSet();
-        }
-    }
+    public void TriggerEvent() { if(!isEventTrigger) isEventTrigger = true; }
 
-    //public void SpawnChunk()
-    //{
-    //    //var instChunk = Instantiate(prefabChunk);
-    //    //listOfChunk.Add(instChunk);
-    //}
 
     string infoPanel;
     GUIStyle gStyle;
@@ -137,7 +158,7 @@ public class ChunkManager : MonoBehaviour
         {
             listInfo += listOfChunk[i].ChunkID + "_" + listOfChunk[i].ChunkState;
             
-            if (i < listOfChunk.Count - 1) listInfo += ",";
+            if (i < listOfChunk.Count - 1) listInfo += ", ";
         }
         listInfo += "]";
 
