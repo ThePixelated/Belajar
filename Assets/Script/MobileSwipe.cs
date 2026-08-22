@@ -1,15 +1,10 @@
 using UnityEngine;
 
-public class MobileSwipe : MonoBehaviour
+public class MobileSwipe
 {
     private static Vector3 startPosTouch = Vector3.zero;
 
-    public void Update()
-    {
-        CalcHorizontal();
-    }
-
-    public static short CalcHorizontal()
+    public static short CalcHorizontal(float margin = 0f)
     {
         if (Input.GetMouseButtonDown(0))
             startPosTouch = Input.mousePosition;
@@ -25,6 +20,6 @@ public class MobileSwipe : MonoBehaviour
         return 0;
     }
 
-    public static bool isReturnLeftSwipe() { if (CalcHorizontal() == 1) return true; return false; }
-    public static bool isReturnRightSwipe() { if (CalcHorizontal() == -1) return true; return false; }
+    public static bool isReturnLeftSwipe(float margin = 0f) { if (CalcHorizontal(margin) == -1) return true; return false; }
+    public static bool isReturnRightSwipe(float margin = 0f) { if (CalcHorizontal(margin) == 1) return true; return false; }
 }
