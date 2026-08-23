@@ -86,10 +86,6 @@ public class ControlManager : MonoBehaviour
         }
     }
 
-    // cek apakah animasi udah selesai
-    // kalo belum tetapi udah swipe maka animasi langsung dipercepat dan posisi langsung diset ke target
-    // play animasi baru lagi & geser ke posisi baru
-
     private IEnumerator PlayerMovement()
     {
         float startTime = Time.time;
@@ -111,10 +107,8 @@ public class ControlManager : MonoBehaviour
             yield return null;
         }
         _playerTrans.position = targetPos;
-        //StopCoroutine(_playerMovementCor);
 
         _playerMovementCor = null;
-        //yield return null;
     }
 
     private string text;
@@ -128,7 +122,7 @@ public class ControlManager : MonoBehaviour
             gStyle.normal.textColor = Color.white;
         }
 
-        float fps = 10.0f / deltaTime;
+        float fps = 1.0f / deltaTime;
 
         text = $"FPS: {fps:.}\n" +
                $"Last input: NaN\n" +
