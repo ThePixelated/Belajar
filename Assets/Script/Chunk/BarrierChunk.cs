@@ -6,7 +6,7 @@ public class BarrierChunk : MonoBehaviour
     {
         if (other.gameObject.CompareTag("FrontConnection"))
         {
-            Debug.Log("Collision Detected");
+            //Debug.Log("Collision Detected");
             ChunkManager.BarrierChunkDetection();
         }
     }

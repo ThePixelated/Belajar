@@ -16,72 +16,74 @@ public class ControlManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.LogWarning("INNITIATE");
+        //    Debug.LogWarning("INNITIATE");
 
-        _playerTrans = player.transform;
-        _playerTrans.position = pivotPlayerPos[(int)PlayerPosition].position;
+            _playerTrans = player.transform;
+            _playerTrans.position = pivotPlayerPos[(int)PlayerPosition].position;
     }
 
     private void Update()
     {
-        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-
-        if (MobileSwipe.isReturnRightSwipe())
+        if (GameManager.CurrentGameState == GameState.PLAYING)
         {
-            Debug.Log("Right Swipe");
-            playerPosition++;
-            PlayerPosition++;
-            if (PlayerPosition > PlayerPosition.RIGHT)
+            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+
+            if (MobileSwipe.isReturnRightSwipe())
             {
-                playerPosition = PlayerPosition.RIGHT;
-                PlayerPosition = PlayerPosition.RIGHT;
-            }
-            else
-            {
-                Debug.Log("Initiate Movement");
-                if (_playerMovementCor == null)
+                Debug.Log("Right Swipe");
+                playerPosition++;
+                PlayerPosition++;
+                if (PlayerPosition > PlayerPosition.RIGHT)
                 {
-                    Debug.LogWarning("Initiate Right Movement");
-                    _playerMovementCor = StartCoroutine(PlayerMovement());
+                    playerPosition = PlayerPosition.RIGHT;
+                    PlayerPosition = PlayerPosition.RIGHT;
                 }
                 else
                 {
-                    //_playerTrans.position = targetPos;
-                    StopCoroutine(_playerMovementCor);
-                    _playerMovementCor = null;
-                    _playerMovementCor = StartCoroutine(PlayerMovement());
+                    if (_playerMovementCor == null)
+                    {
+                        Debug.LogWarning("Initiate Right Movement");
+                        _playerMovementCor = StartCoroutine(PlayerMovement());
+                    }
+                    else
+                    {
+                        //_playerTrans.position = targetPos;
+                        StopCoroutine(_playerMovementCor);
+                        _playerMovementCor = null;
+                        _playerMovementCor = StartCoroutine(PlayerMovement());
+                    }
+                    // geser ama play anim
+                    //_playerTrans
                 }
-                // geser ama play anim
-                //_playerTrans
             }
-        }
 
-        if (MobileSwipe.isReturnLeftSwipe())
-        {
-            playerPosition--;
-            PlayerPosition--;
-            Debug.Log("Left Swipe");
-            if (PlayerPosition < PlayerPosition.LEFT)
+            if (MobileSwipe.isReturnLeftSwipe())
             {
-                playerPosition = PlayerPosition.LEFT;
-                PlayerPosition = PlayerPosition.LEFT;
-            }
-            else
-            {
-                if (_playerMovementCor == null)
+                playerPosition--;
+                PlayerPosition--;
+                Debug.Log("Left Swipe");
+                if (PlayerPosition < PlayerPosition.LEFT)
                 {
-                    Debug.LogWarning("Initiate Left Movement");
-                    _playerMovementCor = StartCoroutine(PlayerMovement());
+                    playerPosition = PlayerPosition.LEFT;
+                    PlayerPosition = PlayerPosition.LEFT;
                 }
                 else
                 {
-                    //_playerTrans.position = targetPos;
-                    StopCoroutine(_playerMovementCor);
-                    _playerMovementCor = null;
-                    _playerMovementCor = StartCoroutine(PlayerMovement());
+                    if (_playerMovementCor == null)
+                    {
+                        Debug.LogWarning("Initiate Left Movement");
+                        _playerMovementCor = StartCoroutine(PlayerMovement());
+                    }
+                    else
+                    {
+                        //_playerTrans.position = targetPos;
+                        StopCoroutine(_playerMovementCor);
+                        _playerMovementCor = null;
+                        _playerMovementCor = StartCoroutine(PlayerMovement());
+                    }
+                    // geser ama play anim
+                    //_playerTrans
                 }
-                // geser ama play anim
-                //_playerTrans
             }
         }
     }
@@ -92,6 +94,7 @@ public class ControlManager : MonoBehaviour
 
         Vector3 startPos = _playerTrans.position;
         targetPos = pivotPlayerPos[(int)PlayerPosition].position;
+        Debug.Log($"Vector: {startPos}, {targetPos}");
         float journalLenght = Vector3.Distance(startPos, targetPos);
 
         Debug.Log($"Jurnal Lenght: {journalLenght}");
