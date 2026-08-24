@@ -62,42 +62,43 @@ public class ChunkManager : MonoBehaviour
 
     private void Innitiate()
     {
-        for (int i = 0; i < lengthListChunk; i++) SpawnChunk();
+        for (int i = 0; i < listOfChunk.Count; i++) ReInnitiateChunk(i);
+        currentChunk = listOfChunk[0].ChunkState;
     }
 
-    private void SpawnChunk()
+    private void ReInnitiateChunk(int i)
     {
-        listOfChunk.Add(new ListOfChunks());
+        //listOfChunk.Add(new ListOfChunks());
         //ChunkSet();
 
-        listOfChunk[listOfChunk.Count - 1].ChunkState = targetChunk;
-        listOfChunk[listOfChunk.Count - 1].ChunkID = _idChunk.ToString();
+        listOfChunk[i].ChunkState = targetChunk;
+        listOfChunk[i].ChunkID = _idChunk.ToString();
         _idChunk++;
 
-        GameObject gObj = Instantiate(prefabChunk);
-        listOfChunk[listOfChunk.Count - 1].ChunkObj = gObj;
+        GameObject gObj = listOfChunk[i].ChunkObj;
+        //listOfChunk[listOfChunk.Count - 1].ChunkObj = gObj;
 
-        gObj.name = "Chunk_" + listOfChunk[listOfChunk.Count - 1].ChunkID + ": " + listOfChunk[listOfChunk.Count - 1].ChunkState;
+        gObj.name = "Chunk_" + listOfChunk[i].ChunkID + ": " + listOfChunk[i].ChunkState;
         gObj.transform.position = spawnPoint.position;
 
 
-        if (listOfChunk.Count > 1)
+        if (i > 0)
         {
             Vector3 childChunk = gObj.GetComponent<ChunkInformation>().LeftPartPref.transform.localScale;
             Debug.Log($"LS {gObj.name}: " + childChunk);
-            Debug.Log($"Trans Pos: {listOfChunk[(listOfChunk.Count - 1) - 1].ChunkObj.name}" + listOfChunk[(listOfChunk.Count - 1) - 1].ChunkObj.transform.position);
+            Debug.Log($"Trans Pos: {listOfChunk[i - 1].ChunkObj.name}" + listOfChunk[i - 1].ChunkObj.transform.position);
 
-            Vector3 targetPos = new Vector3(gObj.transform.position.x, gObj.transform.position.y, listOfChunk[(listOfChunk.Count - 1) - 1].ChunkObj.transform.position.z + childChunk.z);
+            Vector3 targetPos = new Vector3(gObj.transform.position.x, gObj.transform.position.y, listOfChunk[i - 1].ChunkObj.transform.position.z + childChunk.z);
             //Vector3 targetPos = listOfChunk[(listOfChunk.Count - 1) - 1].ChunkObj.transform.position;
             gObj.transform.position = targetPos;
         }
 
-        currentChunk = listOfChunk[0].ChunkState;
+        //currentChunk = listOfChunk[0].ChunkState;
     }
 
     private void PoolingChunk()
     {
-        if (_currentIndexChunkPool >= lengthListChunk)
+        if (_currentIndexChunkPool >= listOfChunk.Count)
             _currentIndexChunkPool = 0;
 
         listOfChunk[_currentIndexChunkPool].ChunkState = targetChunk;
