@@ -11,17 +11,9 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] private bool isEventTrigger;
     [SerializeField] private int lengthListChunk;
     [SerializeField] private List<ListOfChunks> listOfChunk = new List<ListOfChunks>();
-    [SerializeField] private int totalObstacleObj;
-    [SerializeField] private int totalDecorativeObj;
-    [SerializeField] private int availableObstacleObj;
-    [SerializeField] private int availableDecorativeObj;
-    [SerializeField] private ChunkByLevel chunkByLevel;
-
-    private int _decorativeInstance;
-    private int _obstacleInstance;
     private int _idChunk = 0;
     private int _currentIndexChunkPool = 0;
-    //public List<ListOfChunks> ListOfChunks { get { return listOfChunk; } set { listOfChunk = value; } }
+    public List<ListOfChunks> ListOfChunks { get { return listOfChunk; } set { listOfChunk = value; } }
 
     private void Awake()
     {
@@ -47,30 +39,7 @@ public class ChunkManager : MonoBehaviour
     private void Innitiate()
     {
         for (int i = 0; i < listOfChunk.Count; i++) ReInnitiateChunk(i);
-        InitiateDecorativeChunk();
-        // ObstaclePooling()
         currentChunk = listOfChunk[0].ChunkState;
-    }
-
-    private void InitiateDecorativeChunk()
-    {
-        _decorativeInstance = totalDecorativeObj / listOfChunk.Count;
-
-
-        Vector4 leftplateBorder = new Vector4(
-            1, 
-            2, 
-            3, 
-            4);
-        for (int i = 0; i < _decorativeInstance; i++)
-        {
-            
-        }
-    }
-
-    private void ObstaclePooling()
-    {
-
     }
 
     private void ReInnitiateChunk(int i)
